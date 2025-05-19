@@ -15,9 +15,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.fetch.ApiListApp.R
 import com.fetch.ApiListApp.common.Resources
 
 
@@ -47,9 +49,9 @@ fun FetchListScreen(
                 items(state.data ?: emptyList()){
                     item -> Text(
                         text = "List ${item.listId}: ${item.name}",
-                        fontSize = 20.sp,
+                        fontSize = dimensionResource(R.dimen.font_size).value.sp,
                         modifier = Modifier
-                            .padding(10.dp)
+                            .padding(dimensionResource(R.dimen.padding))
                     )
                 }
             }
