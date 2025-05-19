@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlinAndroidKsp)
+    //id("com.google.devtools.ksp")
+    id ("kotlin-kapt")
+    //alias(libs.plugins.kotlinAndroidKsp)
     alias(libs.plugins.hiltAndroid)
     alias(libs.plugins.compose.compiler)
 
@@ -44,7 +46,7 @@ android {
         compose = true
     }
     composeOptions {
-        //kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.1"
     }
     packaging {
         resources {
@@ -65,7 +67,8 @@ dependencies {
     implementation(libs.androidx.material3)
 
     implementation(libs.hilt.android)
-    ksp(libs.hilt.compiler)
+    //ksp(libs.hilt.compiler)
+    kapt ("com.google.dagger:hilt-android-compiler:2.52")
 
     implementation(libs.androidx.compose.compiler)
     implementation(libs.hilt.navigation.compose)
