@@ -4,8 +4,9 @@ import com.fetch.ApiListApp.common.Resources
 import com.fetch.ApiListApp.data.FetchListItem
 import com.fetch.ApiListApp.domain.repository.FetchRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
 
-class GetItemsUseCase(
+class GetItemsUseCase @Inject constructor(
     private val repository: FetchRepository
 ) {
     operator fun invoke(): Flow<Resources<List<FetchListItem>>> {
