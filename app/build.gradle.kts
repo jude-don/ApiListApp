@@ -1,13 +1,15 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.hilt)
-    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlinAndroidKsp)
+    alias(libs.plugins.hiltAndroid)
+    alias(libs.plugins.compose.compiler)
+
 }
 
 android {
     namespace = "com.fetch.ApiListApp"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.fetch.ApiListApp"
@@ -42,7 +44,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        //kotlinCompilerExtensionVersion = "1.5.1"
     }
     packaging {
         resources {
@@ -65,6 +67,7 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
 
+    implementation(libs.androidx.compose.compiler)
     implementation(libs.hilt.navigation.compose)
 
     implementation(libs.retrofit)
