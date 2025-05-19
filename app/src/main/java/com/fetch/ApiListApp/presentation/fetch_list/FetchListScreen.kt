@@ -9,6 +9,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -47,12 +50,21 @@ fun FetchListScreen(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 items(state.data ?: emptyList()){
-                    item -> Text(
-                        text = "List ${item.listId}: ${item.name}",
-                        fontSize = dimensionResource(R.dimen.font_size).value.sp,
+                    item ->
+                    Card(
+                        shape = RoundedCornerShape(dimensionResource(R.dimen.corner_radius)),
+                        elevation = CardDefaults.cardElevation(defaultElevation = dimensionResource(R.dimen.card_elevation)),
                         modifier = Modifier
+                            .fillMaxWidth()
                             .padding(dimensionResource(R.dimen.padding))
-                    )
+                    ) {
+                        Text(
+                            text = "List ${item.listId}: ${item.name}",
+                            fontSize = dimensionResource(R.dimen.font_size).value.sp,
+                            modifier = Modifier
+                                .padding(dimensionResource(R.dimen.padding))
+                        )
+                    }
                 }
             }
         }
